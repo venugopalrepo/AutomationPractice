@@ -14,3 +14,8 @@ Open command prompt or terminal window in IDE, then in the project root path run
 
 _mvn clean verify serenity:check -Dcucumber.options="--tags @Demo" -Denv=test_
 
+**To view the test reports:**
+
+Go to target/serenity folder from project path and open index html file.
+
+**Note:** Serenity is used in this project for reporting purpose only. 
