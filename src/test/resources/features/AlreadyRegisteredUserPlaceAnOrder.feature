@@ -1,6 +1,6 @@
 Feature: Registered user place an order
 @Demo
-Scenario: Already registered user place an Order for multiple productstus
+Scenario: Already registered user place an Order for multiple products
 
 Given user navigate to the shop page
 And login with below credentials

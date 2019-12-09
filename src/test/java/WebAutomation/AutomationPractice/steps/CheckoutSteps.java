@@ -28,6 +28,25 @@ public class CheckoutSteps {
 	}
 	
 	@Step
+	public void fromShoppingCartToRegistration() {
+		checkoutPage.clickProceedToCheckout();
+		checkoutPage.verifyAuthenticationPageDisplayed();
+	}
+	
+	@Step
+	public void fromAddressGoToBankWirePayment() {
+		checkoutPage.verifyCheckoutAddressDisplayed();
+		checkoutPage.clickProcessAddressToCheckout();
+		checkoutPage.verifyCheckoutShippingDisplayed();
+		checkoutPage.tickTAndCs();
+		checkoutPage.clickProcessCarrierToCheckout();
+		checkoutPage.verifyCheckoutPaymentMethodDisplayed();
+		checkoutPage.chooseBankWirePaymentMethod();
+		checkoutPage.verifyCheckoutBankWireMethodDisplayed();
+		checkoutPage.clickOnConfirmOrder();
+	}
+	
+	@Step
 	public void orderConfirmed() {
 		checkoutPage.checkOrderIsConfirmed();
 	}

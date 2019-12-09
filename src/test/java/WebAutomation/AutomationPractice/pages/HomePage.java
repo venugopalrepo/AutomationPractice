@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
+import net.thucydides.core.annotations.findby.By;
 
+@SuppressWarnings("deprecation")
 public class HomePage extends PageObjectEnhanced {
 
 	public HomePage(WebDriver driver) {
@@ -32,5 +34,12 @@ public class HomePage extends PageObjectEnhanced {
 	
 	public void checkSignOutLinkDisplayed() {
 		logout.isDisplayed();
+	}
+	
+	public void checkIfUserNotSignedIn() {
+		boolean isPresent = this.getDriver().findElements(By.xpath("//a[@class='logout']")).size() > 0;
+		if(isPresent) {
+			logout.click();
+		}
 	}
 }

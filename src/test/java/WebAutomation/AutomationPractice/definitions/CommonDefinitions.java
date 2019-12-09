@@ -49,6 +49,7 @@ public class CommonDefinitions {
 	public void openTheHomePage() {
 		commonSteps.openTheHomePage();
 		commonSteps.verifyHomePageDisplayed();
+		commonSteps.checkUserIsNotSignedIn();
 	}
 	
 }

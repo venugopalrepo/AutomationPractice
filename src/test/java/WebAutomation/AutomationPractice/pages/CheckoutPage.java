@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import WebAutomation.AutomationPractice.utility.Common;
+
 import org.junit.Assert;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -15,6 +18,7 @@ public class CheckoutPage extends MasterPage {
 	}
 	
 	private String shoppingCartResource = "Your shopping cart";
+	private String authenticationResource = "Authentication";
 	private String addressesResource = "Addresses";
 	private String shippingResource = "Shipping";
 	private String paymentMethodResource = "Your payment method";
@@ -37,15 +41,23 @@ public class CheckoutPage extends MasterPage {
 	@FindBy(xpath = "//button[@name='processCarrier']//span[contains(text(),'Proceed to checkout')]")
 	private WebElement processCarrier;
 	
-	
-	
-	
 	@FindBy(xpath = "//label[contains(text(),'I agree to the terms of service and will adhere to')]")
 	private WebElement tAndCsTickBox;
 	
 	@FindBy(xpath = "//span[contains(text(),'I confirm my order')]")
 	private WebElement confirmOrder;
 	
+	@FindBy(xpath = "//input[@id='email_create']")
+	private WebElement createEmail;
+	
+	@FindBy(xpath = "//button[@id=\"SubmitCreate\"]")
+	private WebElement createAccountButton;
+	
+	
+	public void submitNewEmail() {
+		type(createEmail, Common.getRandomEmail());
+		createAccountButton.click();
+	}
 	
 	public void clickOnConfirmOrder() {
 		confirmOrder.click();
@@ -93,6 +105,10 @@ public class CheckoutPage extends MasterPage {
 	
 	public void verifyCheckoutAddressDisplayed() {
 		Assert.assertEquals("Checkout Address not displayed", addressesResource, this.getNavigationLinkText());
+	}
+	
+	public void verifyAuthenticationPageDisplayed() {
+		Assert.assertEquals("Authentication page not displayed", authenticationResource, this.getNavigationLinkText());
 	}
 	
 	public void verifyCheckoutShippingDisplayed() {

@@ -41,6 +41,15 @@ public class Common {
 		return i;
 
 	}
+	
+	public static String getRandomEmail() {
+		
+		Random rand = new Random();
+		int i = rand.nextInt(100000);
+		String email = "abctest" + i + "@test.com";
+		return email;
+
+	}
 
 	public static List<String> convertStringToList(String str, String delim) {
 
